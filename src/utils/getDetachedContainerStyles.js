@@ -23,7 +23,7 @@ import { OPEN_UP, ANCHOR_RIGHT } from '../constants';
 export default function getDetachedContainerStyles(openDirection, anchorDirection, referenceEl) {
   const referenceRect = referenceEl.getBoundingClientRect();
   let offsetX = referenceRect.left;
-  let offsetY = referenceRect.top;
+  var offsetY = referenceRect.top - (document.documentElement.style.top.replace("px", "") || 0);
 
   if (openDirection === OPEN_UP) {
     offsetY = -(window.innerHeight - referenceRect.bottom);
