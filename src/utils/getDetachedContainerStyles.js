@@ -22,11 +22,13 @@ import { OPEN_UP, ANCHOR_RIGHT } from '../constants';
  */
 export default function getDetachedContainerStyles(openDirection, anchorDirection, referenceEl) {
   const referenceRect = referenceEl.getBoundingClientRect();
-  let offsetX = referenceRect.left;
-  var offsetY = referenceRect.top - (document.documentElement.style.top.replace("px", "") || 0);
+  let noScrollAdjustment = document.documentElement.style.top.replace("px", "") || 0;
+  let offsetX = referenceRect.left;  
+  var offsetY = referenceRect.top - noScrollAdjustment;
 
   if (openDirection === OPEN_UP) {
-    offsetY = -(window.innerHeight - referenceRect.bottom);
+    offsetY = -(window.innerHeight - referenceRect.bottom) - noScrollAdjustment;
+    
   }
 
   if (anchorDirection === ANCHOR_RIGHT) {
