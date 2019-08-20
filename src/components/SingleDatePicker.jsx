@@ -291,8 +291,8 @@ class SingleDatePicker extends React.PureComponent {
   }
 
   disableScroll() {
-    const { appendToBody, disableScroll: propDisableScroll, focused } = this.props;
-    if (!appendToBody && !propDisableScroll) return;
+    const { disableScroll: propDisableScroll, focused } = this.props;
+    if (!propDisableScroll) return;
     if (!focused) return;
 
     // Disable scroll for every ancestor of this <SingleDatePicker> up to the
